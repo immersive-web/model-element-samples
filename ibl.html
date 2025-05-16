@@ -5,23 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Model: IBL test</title>
+    <link rel="stylesheet" href="style.css" />
     <style>
       html {
         color: rgb(221, 221, 221);
         background-color: rgb(55, 55, 55);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
-          Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
-          sans-serif;
-        padding: 20px;
-        max-width: 1024px;
       }
 
       model,
       model img {
-        width: 400px;
         background-color: rgb(55, 55, 55);
-        height: 400px;
       }
+
       pre {
         background-color: rgb(102, 102, 102);
         display: inline-block;
@@ -30,33 +25,36 @@
     </style>
   </head>
   <body>
-    <h1>Model: IBL test</h1>
-    <hr />
-    <p>
-      Use of the <code>environmentmap</code> attribute to set a custom
-      image-based light (IBL) resource. Note that while the resource may be an
-      image in any format, the dynamic range requirements for an IBL mean that
-      it is strongly recommended to use a raw, high-dynamic range (HDR) format
-      like the Radiance RGBE <code>.hdr</code> format, or the OpenEXR
-      <code>.exr</code> format. Resources are assumed to be presented in the
-      equirectangular projection.
-    </p>
-    <pre>
+    <div class="container">
+      <h1>Model: IBL test</h1>
+      <hr />
+      <p>
+        Use of the <code>environmentmap</code> attribute to set a custom
+        image-based light (IBL) resource. Note that while the resource may be an
+        image in any format, the dynamic range requirements for an IBL mean that
+        it is strongly recommended to use a raw, high-dynamic range (HDR) format
+        like the Radiance RGBE <code>.hdr</code> format, or the OpenEXR
+        <code>.exr</code> format. Resources are assumed to be presented in the
+        equirectangular projection.
+      </p>
+      <pre>
 &lt;model environmentmap="night.hdr" alt="a teapot in a dark environment"&gt;
   &lt;source src="./teapot.usdz" type="model/vnd.usdz+zip" /&gt;
   &lt;source src="./teapot.glb" type="model/gltf-binary" /&gt;
-  &lt;img src="./teapot-fallback-ibl.jpg" alt="An image of a model of a teapot lit by a dark environment" &gt;
+  &lt;img src="./teapot-fallback-ibl.jpg" alt="An image of a model of a teapot lit by a dark environment"&gt;
 &lt;/model&gt;
-    </pre>
-    <br />
-    <h2>Result</h2>
+    </pre
+      >
+      <br />
+      <h2>Result</h2>
 
-    <model environmentmap="night.hdr" alt="a teapot in a dark environment">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-ibl.jpg"
-        alt="An image of a model of a teapot lit by a dark environment" />
-    </model>
+      <model environmentmap="night.hdr" alt="a teapot in a dark environment">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-ibl.jpg"
+          alt="An image of a model of a teapot lit by a dark environment" />
+      </model>
+    </div>
   </body>
 </html>

@@ -8,33 +8,36 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: Basic Blob URL test overriding type</h1>
-    <hr />
+    <div class="container">
+      <h1>Model: Basic Blob URL test overriding type</h1>
+      <hr />
 
-    <h2>HTML</h2>
-    <pre>
+      <h2>HTML</h2>
+      <pre>
 &lt;model alt="A model of a teapot" data-src="./teapot.usdz" data-type="model/vnd.usdz+zip"&gt;
 &lt;/model&gt;
-    </pre>
-    <h2>JavaScript</h2>
-    <pre>
+    </pre
+      >
+      <h2>JavaScript</h2>
+      <pre>
 const model = document.querySelector('model');
 const {src, type} = model.dataset;
 const bytes = await (await fetch(src)).bytes();
 const srcString = URL.createObjectURL(new Blob([bytes], {type}));
 model.setAttribute('src', srcString);
 </pre
-    >
+      >
 
-    <model
-      draggable="true"
-      alt="A model of a teapot"
-      data-type="model/vnd.usdz+zip"
-      data-src="./teapot.usdz">
-      <img
-        src="./teapot-fallback-black.jpg"
-        alt="An image of a model of a teapot" />
-    </model>
+      <model
+        draggable="true"
+        alt="A model of a teapot"
+        data-type="model/vnd.usdz+zip"
+        data-src="./teapot.usdz">
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+    </div>
   </body>
 
   <script type="module">

@@ -8,28 +8,30 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: playbackRate test</h1>
-    <hr />
-    <p>
-      A model's <code>playbackRate</code> may be altered to change the speed of
-      the animation. While playing, the animation will advance according to the
-      rate specified.
-    </p>
+    <div class="container">
+      <h1>Model: playbackRate test</h1>
+      <hr />
+      <p>
+        A model's <code>playbackRate</code> may be altered to change the speed
+        of the animation. While playing, the animation will advance according to
+        the rate specified.
+      </p>
 
-    <h2>JavaScript</h2>
-    <pre>model.playbackRate = 2; //double the default rate </pre>
+      <h2>JavaScript</h2>
+      <pre>model.playbackRate = 2; //double the default rate</pre>
 
-    <model autoplay loop>
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-animated.jpg"
-        alt="An image of a model of a teapot with a creature inside" />
-    </model>
-    <br />
-    Playback rate:
-    <span id="ratelabel"></span>
-    <input type="range" min="0" max="2" value="1" step="0.1" id="rate" />
+      <model autoplay loop>
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-animated.jpg"
+          alt="An image of a model of a teapot with a creature inside" />
+      </model>
+      <br />
+      Playback rate:
+      <span id="ratelabel"></span>
+      <input type="range" min="0" max="2" value="1" step="0.1" id="rate" />
+    </div>
   </body>
 
   <script type="module">

@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: auto-rotate test</h1>
-    <hr />
-    <p>
-      A model's <code>DOMMatrixReadOnly entityTransform</code> can be set to
-      display a certain side, or to automatically animate the content.
-    </p>
+    <div class="container">
+      <h1>Model: auto-rotate test</h1>
+      <hr />
+      <p>
+        A model's <code>DOMMatrixReadOnly entityTransform</code> can be set to
+        display a certain side, or to automatically animate the content.
+      </p>
 
-    <h2>HTML</h2>
-    <pre>
+      <h2>HTML</h2>
+      <pre>
 &lt;model alt="A model of a teapot"&gt;
     &lt;source src="./teapot.usdz" type="model/vnd.usdz+zip" /&gt;
     &lt;source src="./teapot.glb"  type="model/gltf-binary" /&gt;
 &lt;/model&gt;
 </pre
-    >
+      >
 
-    <h2>JavaScript:</h2>
-    <pre>
+      <h2>JavaScript:</h2>
+      <pre>
 let initialTransform;
 const model = document.querySelector('model');
 await model.ready;
@@ -42,17 +43,18 @@ function update() {
     requestAnimationFrame(update);
 }
 </pre
-    >
+      >
 
-    <br />
+      <br />
 
-    <model alt="A model of a teapot">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-black.jpg"
-        alt="An image of a model of a teapot" />
-    </model>
+      <model alt="A model of a teapot">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+    </div>
   </body>
   <script type="module">
     let initialTransform;

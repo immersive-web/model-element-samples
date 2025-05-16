@@ -8,26 +8,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: currentTime test</h1>
-    <hr />
-    <p>
-      When a model has an animation, its <code>currentTime</code> attribute can
-      be read and written to update the animation's progress.
-    </p>
-    <h2>JavaScript</h2>
-    <pre>model.currentTime = 2.5;</pre>
+    <div class="container">
+      <h1>Model: currentTime test</h1>
+      <hr />
+      <p>
+        When a model has an animation, its <code>currentTime</code> attribute
+        can be read and written to update the animation's progress.
+      </p>
+      <h2>JavaScript</h2>
+      <pre>model.currentTime = 2.5;</pre>
 
-    <model alt="A model of a teapot with a hidden creature">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-animated.jpg"
-        alt="An image of a model of a teapot with a creature inside" />
-    </model>
-    <br />
-    Current time:
-    <span id="timelabel"></span>
-    <input type="range" min="0" max="1" value="0" step="0.02" id="time" />
+      <model alt="A model of a teapot with a hidden creature">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-animated.jpg"
+          alt="An image of a model of a teapot with a creature inside" />
+      </model>
+      <br />
+      Current time:
+      <span id="timelabel"></span>
+      <input type="range" min="0" max="1" value="0" step="0.02" id="time" />
+    </div>
   </body>
 
   <script type="module">

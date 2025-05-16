@@ -7,7 +7,7 @@
     <title>Model: fit test</title>
     <link rel="stylesheet" href="style.css" />
     <style>
-      .container {
+      .section {
         margin-bottom: 20px;
       }
 
@@ -45,38 +45,40 @@
     </style>
   </head>
   <body>
-    <h1>Model: Fit test</h1>
-    <hr />
-    <pre>
+    <div class="container">
+      <h1>Model: Fit test</h1>
+      <hr />
+      <pre>
 &lt;model alt="A model of a cube"&gt;
   &lt;source src="./cube.usdz" type="model/vnd.usdz+zip" /&gt;
   &lt;source src="./cube.glb" type="model/gltf-binary" /&gt;
 &lt;/model&gt;
 </pre
-    >
+      >
 
-    <div class="container">
-      <model id="model1" alt="A model of a cube">
-        <source src="./cube.usdz" type="model/vnd.usdz+zip" />
-        <source src="./cube.glb" type="model/gltf-binary" />
-        <img src="./cube.png" alt="An image of a model of a cube" />
-      </model>
-    </div>
+      <div class="section">
+        <model id="model1" alt="A model of a cube">
+          <source src="./cube.usdz" type="model/vnd.usdz+zip" />
+          <source src="./cube.glb" type="model/gltf-binary" />
+          <img src="./cube.png" alt="An image of a model of a cube" />
+        </model>
+      </div>
 
-    <div class="container">
-      <model id="model2" alt="A model of a cube">
-        <source src="./cube.usdz" type="model/vnd.usdz+zip" />
-        <source src="./cube.glb" type="model/gltf-binary" />
-        <img src="./cube.png" alt="An image of a model of a cube" />
-      </model>
-    </div>
+      <div class="section">
+        <model id="model2" alt="A model of a cube">
+          <source src="./cube.usdz" type="model/vnd.usdz+zip" />
+          <source src="./cube.glb" type="model/gltf-binary" />
+          <img src="./cube.png" alt="An image of a model of a cube" />
+        </model>
+      </div>
 
-    <div class="container">
-      <model id="model3" alt="A model of a cube">
-        <source src="./cube.usdz" type="model/vnd.usdz+zip" />
-        <source src="./cube.glb" type="model/gltf-binary" />
-        <img src="./cube.png" alt="An image of a model of a cube" />
-      </model>
+      <div class="section">
+        <model id="model3" alt="A model of a cube">
+          <source src="./cube.usdz" type="model/vnd.usdz+zip" />
+          <source src="./cube.glb" type="model/gltf-binary" />
+          <img src="./cube.png" alt="An image of a model of a cube" />
+        </model>
+      </div>
     </div>
   </body>
 </html>

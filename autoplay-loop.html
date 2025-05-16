@@ -8,32 +8,34 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: Autoplay and loop test</h1>
+    <div class="container">
+      <h1>Model: Autoplay and loop test</h1>
 
-    <hr />
-    <p>
-      If a model contains an animation track, it will be available to play once
-      the model has loaded. <code>autoplay</code> will trigger the playback
-      automatically, and <code>loop</code> will loop the content, irrespective
-      of whether the playback was started via the JavaScript
-      <code>play()</code> or the attribute.
-    </p>
+      <hr />
+      <p>
+        If a model contains an animation track, it will be available to play
+        once the model has loaded. <code>autoplay</code> will trigger the
+        playback automatically, and <code>loop</code> will loop the content,
+        irrespective of whether the playback was started via the JavaScript
+        <code>play()</code> or the attribute.
+      </p>
 
-    <pre>
+      <pre>
 &lt;model autoplay loop alt="A model of a teapot with a hidden creature"&gt;
   &lt;source src="./teapot.usdz" type="model/vnd.usdz+zip" /&gt;
   &lt;source src="./teapot.glb" type="model/gltf-binary" /&gt;
 &lt;/model&gt;
 </pre
-    >
+      >
 
-    <br />
-    <model autoplay loop alt="A model of a teapot with a hidden creature">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-animated.jpg"
-        alt="An image of a model of a teapot with a creature inside" />
-    </model>
+      <br />
+      <model autoplay loop alt="A model of a teapot with a hidden creature">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-animated.jpg"
+          alt="An image of a model of a teapot with a creature inside" />
+      </model>
+    </div>
   </body>
 </html>

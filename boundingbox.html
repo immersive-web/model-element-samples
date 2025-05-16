@@ -8,38 +8,40 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Model: Bounding-box information</h1>
-    <hr />
-    <p>
-      after <code>model.ready</code> promise is resolved, a model can report its
-      <code>DOMPoint boundingBoxExtents</code> and
-      <code>DOMPoint boundingBoxCenter</code>.
-    </p>
+    <div class="container">
+      <h1>Model: Bounding-box information</h1>
+      <hr />
+      <p>
+        after <code>model.ready</code> promise is resolved, a model can report
+        its <code>DOMPoint boundingBoxExtents</code> and
+        <code>DOMPoint boundingBoxCenter</code>.
+      </p>
 
-    <model alt="A model of a teapot">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-black.jpg"
-        alt="An image of a model of a teapot" />
-    </model>
-    <br />
-    <h2>Report:</h2>
-    <div id="log"></div>
-  </body>
+      <model alt="A model of a teapot">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+      <br />
+      <h2>Report:</h2>
+      <div id="log"></div>
+    </div>
 
-  <script type="module">
-    function writePoint(pt) {
-      return `x: ${pt.x}, y: ${pt.y}, z: ${pt.z}`;
-    }
+    <script type="module">
+      function writePoint(pt) {
+        return `x: ${pt.x}, y: ${pt.y}, z: ${pt.z}`;
+      }
 
-    const model = document.querySelector('model');
-    await model.ready;
+      const model = document.querySelector('model');
+      await model.ready;
 
-    const log = document.getElementById('log');
-    log.innerHTML = `bounding box center: ${writePoint(
-      model.boundingBoxCenter
-    )} <br/>
+      const log = document.getElementById('log');
+      log.innerHTML = `bounding box center: ${writePoint(
+        model.boundingBoxCenter
+      )} <br/>
     bounding box extents: ${writePoint(model.boundingBoxExtents)}`;
-  </script>
+    </script>
+  </body>
 </html>

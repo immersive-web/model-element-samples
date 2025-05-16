@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="style.css" />
     <style>
       model {
-        width: 400px;
-        height: 400px;
         background-color: blue;
       }
       pre {
@@ -20,35 +18,36 @@
     </style>
   </head>
   <body>
-    <h1>Model: Background color test</h1>
-    <p>
-      Set the background with CSS. Note that because the model exists in a plane
-      conceptually <em>behind</em> the page, it is not recommended to support a
-      transparent background.
-    </p>
-    <hr />
-    <h2>HTML</h2>
-    <pre>
+    <div class="container">
+      <h1>Model: Background color test</h1>
+      <hr />
+      <p>
+        Set the background with CSS. Note that because the model exists in a
+        plane conceptually <em>behind</em> the page, it is not recommended to
+        support a transparent background.
+      </p>
+      <h2>HTML</h2>
+      <pre>
 &lt;model alt="A model of a teapot"&gt;
   &lt;source src="./teapot.usdz" type="model/vnd.usdz+zip" /&gt;
   &lt;source src="./teapot.glb" type="model/gltf-binary" /&gt;
-&lt;/model&gt;
-  </pre
-    >
-    <h2>CSS</h2>
-    <pre>
-model {
-  background-color:blue;
-}
-</pre
-    >
+&lt;/model&gt;</pre
+      >
 
-    <model alt="A model of a teapot">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-blue.jpg"
-        alt="An image of a model of a teapot on a blue background" />
-    </model>
+      <h2>CSS</h2>
+      <pre>
+model {
+  background-color: blue;
+}</pre
+      >
+
+      <model alt="A model of a teapot">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-blue.jpg"
+          alt="An image of a model of a teapot on a blue background" />
+      </model>
+    </div>
   </body>
 </html>
