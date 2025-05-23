@@ -26,20 +26,20 @@
     <br />
     <h2>Report:</h2>
     <div id="log"></div>
+
+    <script type="module">
+      function writePoint(pt) {
+        return `x: ${pt.x}, y: ${pt.y}, z: ${pt.z}`;
+      }
+
+      const model = document.querySelector('model');
+      await model.ready;
+
+      const log = document.getElementById('log');
+      log.innerHTML = `bounding box center: ${writePoint(
+        model.boundingBoxCenter
+      )} <br/>
+      bounding box extents: ${writePoint(model.boundingBoxExtents)}`;
+    </script>
   </body>
-
-  <script type="module">
-    function writePoint(pt) {
-      return `x: ${pt.x}, y: ${pt.y}, z: ${pt.z}`;
-    }
-
-    const model = document.querySelector('model');
-    await model.ready;
-
-    const log = document.getElementById('log');
-    log.innerHTML = `bounding box center: ${writePoint(
-      model.boundingBoxCenter
-    )} <br/>
-    bounding box extents: ${writePoint(model.boundingBoxExtents)}`;
-  </script>
 </html>
