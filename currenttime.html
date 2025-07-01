@@ -30,14 +30,14 @@
       <span id="timelabel"></span>
       <input type="range" min="0" max="1" value="0" step="0.02" id="time" />
     </div>
-  </body>
 
-  <script type="module">
-    const model = document.querySelector('model');
-    await model.ready;
-    time.addEventListener('input', (e) => {
-      timelabel.innerHTML = (time.value * model.duration).toFixed(1) + 's';
-      model.currentTime = time.value * model.duration;
-    });
-  </script>
+    <script type="module">
+      const model = document.querySelector('model');
+      await model.ready;
+      time.addEventListener('input', (e) => {
+        timelabel.innerHTML = (time.value * model.duration).toFixed(1) + 's';
+        model.currentTime = time.value * model.duration;
+      });
+    </script>
+  </body>
 </html>

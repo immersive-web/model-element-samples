@@ -32,16 +32,16 @@
       <span id="ratelabel"></span>
       <input type="range" min="0" max="2" value="1" step="0.1" id="rate" />
     </div>
-  </body>
 
-  <script type="module">
-    const model = document.querySelector('model');
-    await model.ready;
-    model.playbackRate = 1;
-    rate.addEventListener('input', (e) => {
-      var rateSq = Math.pow(rate.value, 2);
-      ratelabel.innerHTML = (rateSq * 100).toFixed() + '%';
-      model.playbackRate = rateSq;
-    });
-  </script>
+    <script type="module">
+      const model = document.querySelector('model');
+      await model.ready;
+      model.playbackRate = 1;
+      rate.addEventListener('input', (e) => {
+        var rateSq = Math.pow(rate.value, 2);
+        ratelabel.innerHTML = (rateSq * 100).toFixed() + '%';
+        model.playbackRate = rateSq;
+      });
+    </script>
+  </body>
 </html>

@@ -38,13 +38,13 @@ model.setAttribute('src', srcString);
           alt="An image of a model of a teapot" />
       </model>
     </div>
-  </body>
 
-  <script type="module">
-    const model = document.querySelector('model');
-    const { src, type } = model.dataset;
-    const bytes = await (await fetch(src)).bytes();
-    const srcString = URL.createObjectURL(new Blob([bytes], { type }));
-    model.setAttribute('src', srcString);
-  </script>
+    <script type="module">
+      const model = document.querySelector('model');
+      const { src, type } = model.dataset;
+      const bytes = await (await fetch(src)).bytes();
+      const srcString = URL.createObjectURL(new Blob([bytes], { type }));
+      model.setAttribute('src', srcString);
+    </script>
+  </body>
 </html>
