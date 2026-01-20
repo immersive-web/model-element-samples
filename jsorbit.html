@@ -64,6 +64,7 @@
           (1 - INPUT_SMOOTH_FACTOR) * dy + INPUT_SMOOTH_FACTOR * smoothDY;
 
         model.entityTransform = initialXfo
+          .translate(0,0,-0.1)
           .rotate(smoothDY / VERTICAL_DRAG_FACTOR, 0, 0)
           .rotate(0, smoothDX / HORIZONTAL_DRAG_FACTOR, 0);
       } catch (err) {
