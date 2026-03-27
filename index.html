@@ -9,25 +9,39 @@
   </head>
   <body>
     <div class="container">
+
       <h1>List of model samples:</h1>
 
-    <ul>
-      <a href="./autoplay-loop.html">autoplay+loop</a>
-      <a href="./background.html">background</a>
-      <a href="./basic.html">basic</a>
-      <a href="./basic-blob-url.html">basic Blob URL</a>
-      <a href="./data-url.html">data-url</a>
-      <a href="./boundingbox.html">boundingbox</a>
-      <a href="./currenttime.html">currenttime</a>
-      <a href="./autorotate.html">autorotate</a>
-      <a href="./ibl.html">ibl</a>
-      <a href="./orbit.html">orbit</a>
-      <a href="./jsorbit.html">jsorbit</a>
-      <a href="./playbackrate.html">playbackrate</a>
-      <a href="./fit.html">fit</a>
-      <a href="./toggle.html">toggle</a>
-      <a href="./css-scale.html">CSS scale</a>
-      <a href="./fullscreen.html">fullscreen</a>
-    </ul>
+      <div id="model-support-status">&nbsp;</div>
+
+      <ul>
+        <a href="./autoplay-loop.html">autoplay+loop</a>
+        <a href="./background.html">background</a>
+        <a href="./basic.html">basic</a>
+        <a href="./basic-blob-url.html">basic Blob URL</a>
+        <a href="./data-url.html">data-url</a>
+        <a href="./boundingbox.html">boundingbox</a>
+        <a href="./currenttime.html">currenttime</a>
+        <a href="./autorotate.html">autorotate</a>
+        <a href="./ibl.html">ibl</a>
+        <a href="./orbit.html">orbit</a>
+        <a href="./jsorbit.html">jsorbit</a>
+        <a href="./playbackrate.html">playbackrate</a>
+        <a href="./fit.html">fit</a>
+        <a href="./toggle.html">toggle</a>
+        <a href="./css-scale.html">CSS scale</a>
+        <a href="./fullscreen.html">fullscreen</a>
+      </ul>
+
+      <script type="module">
+        const modelSupportStatus = document.getElementById('model-support-status');
+        const modelSupport = 'HTMLModelElement' in window;
+
+        const supportedMessage = 'Your browser supports the &lt;model&gt; element. You can view the samples below.';
+        const notSupportedMessage = 'Your browser does not support the &lt;model&gt; element. Please use a browser that supports the &lt;model&gt; element.';
+
+        modelSupportStatus.innerHTML = modelSupport ? supportedMessage : notSupportedMessage;
+        modelSupportStatus.classList.toggle('supported', modelSupport);
+      </script>
   </body>
 </html>
