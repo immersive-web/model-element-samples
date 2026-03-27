@@ -55,22 +55,23 @@ function update() {
           alt="An image of a model of a teapot" />
       </model>
     </div>
-  </body>
-  <script type="module">
-    let initialTransform;
-    const model = document.querySelector('model');
-    await model.ready;
-    initialTransform = model.entityTransform.translate(0, 0, -0.05);
-    requestAnimationFrame(update);
 
-    function update() {
-      try {
-        const angleY = performance.now() / 10;
-        model.entityTransform = initialTransform.rotate(0, angleY, 0);
-      } catch (error) {
-        console.warn('failed to set transform', error);
-      }
+    <script type="module">
+      let initialTransform;
+      const model = document.querySelector('model');
+      await model.ready;
+      initialTransform = model.entityTransform.translate(0, 0, -0.05);
       requestAnimationFrame(update);
-    }
-  </script>
+
+      function update() {
+        try {
+          const angleY = performance.now() / 10;
+          model.entityTransform = initialTransform.rotate(0, angleY, 0);
+        } catch (error) {
+          console.warn('failed to set transform', error);
+        }
+        requestAnimationFrame(update);
+      }
+    </script>
+  </body>
 </html>

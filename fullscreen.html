@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model: fullscreen test</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Model: Fullscreen test</h1>
+      <hr />
+      <p>
+        A model may be fullscreened by calling
+        <code>requestFullscreen()</code> on the model element, like most
+        standard HTML elements.
+      </p>
+
+      <button id="fullscreenButton">Fullscreen</button>
+
+      <model alt="A model of a teapot">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+    </div>
+
+    <script type="module">
+      const model = document.querySelector('model');
+      const fullscreenButton = document.querySelector('#fullscreenButton');
+
+      fullscreenButton.addEventListener('click', toggleFullscreen);
+      model.addEventListener('dblclick', toggleFullscreen);
+
+      function toggleFullscreen() {
+        if (!document.fullscreenElement) {
+          model.requestFullscreen();
+        } else {
+          document.exitFullscreen();
+        }
+      }
+    </script>
+  </body>
+</html>

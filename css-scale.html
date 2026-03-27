@@ -13,40 +13,42 @@
     </style>
   </head>
   <body>
-    <h1>Model: CSS scale test</h1>
-    <hr />
-    <p>
-      This model has a CSS transform scale applied to it. Click the button to
-      toggle the scale.
-    </p>
+    <div class="container">
+      <h1>Model: CSS scale test</h1>
+      <hr />
+      <p>
+        This model has a CSS transform scale applied to it. Click the button to
+        toggle the scale.
+      </p>
 
-    <h2>CSS</h2>
-    <pre>
+      <h2>CSS</h2>
+      <pre>
 .scale {
   transform: scale(0.5, 1);
 }
 </pre
-    >
+      >
 
-    <h2>HTML</h2>
-    <pre>
+      <h2>HTML</h2>
+      <pre>
 &lt;model alt="A model of a teapot" class="scale"&gt;
   &lt;source src="./teapot.usdz" type="model/vnd.usdz+zip" /&gt;
   &lt;source src="./teapot.glb" type="model/gltf-binary" /&gt;
 &lt;/model&gt;
 </pre
-    >
+      >
 
-    <model alt="A model of a teapot" class="scale">
-      <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
-      <source src="./teapot.glb" type="model/gltf-binary" />
-      <img
-        src="./teapot-fallback-black.jpg"
-        alt="An image of a model of a teapot" />
-    </model>
-    <br />
+      <model alt="A model of a teapot" class="scale">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+      <br />
 
-    <button id="toggle-scale">Toggle Scale</button>
+      <button id="toggle-scale">Toggle Scale</button>
+    </div>
 
     <script type="module">
       const model = document.querySelector('model');
