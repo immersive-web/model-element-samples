@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model: toggle</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Model: toggle</h1>
+      <hr />
+      <p>
+        A model is dynamically added or removed from the document when the button is clicked.
+      </p>
+
+      <p>
+        <button type="button" id="toggle">Add model</button>
+      </p>
+
+      <div id="model-slot"></div>
+    </div>
+
+    <template id="model-template">
+      <model alt="A model of a teapot">
+        <source src="./teapot.usdz" type="model/vnd.usdz+zip" />
+        <source src="./teapot.glb" type="model/gltf-binary" />
+        <img
+          src="./teapot-fallback-black.jpg"
+          alt="An image of a model of a teapot" />
+      </model>
+    </template>
+
+    <script type="module">
+      const slot = document.getElementById('model-slot');
+      const button = document.getElementById('toggle');
+      const template = document.getElementById('model-template');
+
+      let modelEl = null;
+
+      const toggleModel = () => {
+        if (modelEl) {
+          modelEl.remove();
+          modelEl = null;
+          button.textContent = 'Add model';
+        } else {
+          slot.innerHTML = template.innerHTML;
+          modelEl = slot.querySelector('model');
+          button.textContent = 'Remove model';
+        }
+      };
+
+      button.addEventListener('click', toggleModel);
+    </script>
+  </body>
+</html>
