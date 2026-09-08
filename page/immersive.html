@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model: immersive test</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-block: 16px;
+      }
+
+      .actions button {
+        margin-bottom: 0;
+      }
+
+      .status {
+        margin-block: 8px 16px;
+        border: 1px solid #000;
+        padding: 10px;
+        border-radius: 3px;
+        background-color: #ffffe0;
+      }
+
+      .status.supported {
+        background-color: #adeaad;
+      }
+
+      #room {
+        width: 600px;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: 2 / 1;
+      }
+
+      body:has(model:immersive) {
+        background-color: #f3f5f6;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="../js/polyfill-toggle.js"></script>
+    <div class="container">
+      <h1>Model: Immersive test</h1>
+      <hr />
+      <p>Test of the Immersive API for presenting a model as an immersive environment.</p>
+      <p id="status" class="status" role="status">Checking immersive support...</p>
+
+      <pre>
+&lt;model id="room" alt="A room environment"&gt;
+  &lt;source src="../assets/room.usdz" type="model/vnd.usdz+zip" /&gt;
+  &lt;source src="../assets/room.glb" type="model/gltf-binary" /&gt;
+&lt;/model&gt;
+
+&lt;button onclick="document.getElementById('room').requestImmersive()"&gt;Enter immersive&lt;/button&gt;
+&lt;button onclick="document.exitImmersive()"&gt;Exit immersive&lt;/button&gt;</pre
+      >
+
+      <div class="actions">
+        <button id="enter-immersive" type="button" disabled>
+          Enter immersive
+        </button>
+        <button id="exit-immersive" type="button" disabled>
+          Exit immersive
+        </button>
+      </div>
+
+      <model id="room" alt="A room environment">
+        <source src="../assets/room.usdz" type="model/vnd.usdz+zip" />
+        <source src="../assets/room.glb" type="model/gltf-binary" />
+      </model>
+    </div>
+
+    <script type="module">
+      const room = document.getElementById('room');
+      const status = document.getElementById('status');
+      const enterButton = document.getElementById('enter-immersive');
+      const exitButton = document.getElementById('exit-immersive');
+      let roomReady = false;
+      let pending = '';
+      let errorMessage = '';
+      let inlineTransform = null;
+
+      const immersiveSupported =
+        'HTMLModelElement' in window &&
+        typeof HTMLModelElement.prototype.requestImmersive === 'function';
+
+      const setStatus = (message) => {
+        status.textContent = message;
+      };
+
+      const syncImmersiveState = () => {
+        const isImmersive = document.immersiveElement === room;
+        // Presentation changes reset the browser's fit; restore our inline framing.
+        if (!isImmersive && inlineTransform) {
+          room.entityTransform = inlineTransform;
+        }
+        enterButton.disabled = !!pending || isImmersive || !document.immersiveEnabled || !roomReady;
+        exitButton.disabled = !!pending || !isImmersive;
+        status.classList.toggle('supported', !!document.immersiveEnabled && !errorMessage);
+        setStatus(errorMessage || pending || (
+          !document.immersiveEnabled ? 'Immersive presentation is unavailable.' :
+          !roomReady ? 'Loading room...' :
+          isImmersive ? 'Room is immersive.' : 'Room is inline.'
+        ));
+      };
+
+      if (!immersiveSupported) {
+        setStatus('Immersive API is not supported in this browser.');
+      } else {
+        document.addEventListener('immersivechange', () => {
+          errorMessage = '';
+          syncImmersiveState();
+        });
+        room.addEventListener('immersiveerror', () => {
+          errorMessage = 'Immersive presentation ended because of an error.';
+          syncImmersiveState();
+        });
+
+        enterButton.addEventListener('click', async () => {
+          if (enterButton.disabled) return;
+          errorMessage = '';
+          pending = 'Entering immersive...';
+          syncImmersiveState();
+          try {
+            await room.requestImmersive();
+          } catch (error) {
+            errorMessage = `Could not enter immersive: ${error.message}`;
+          } finally {
+            pending = '';
+            syncImmersiveState();
+          }
+        });
+
+        exitButton.addEventListener('click', async () => {
+          if (exitButton.disabled) return;
+          errorMessage = '';
+          pending = 'Exiting immersive...';
+          syncImmersiveState();
+          try {
+            await document.exitImmersive();
+          } catch (error) {
+            errorMessage = `Could not exit immersive: ${error.message}`;
+          } finally {
+            pending = '';
+            syncImmersiveState();
+          }
+        });
+
+        syncImmersiveState();
+        try {
+          await room.ready;
+          const initialTransform = room.entityTransform;
+          // Move toward the viewer by one sixth of the room's depth.
+          inlineTransform = initialTransform.translate(
+            0, 0, room.boundingBoxExtents.z / 6
+          );
+          roomReady = true;
+        } catch (error) {
+          errorMessage = `Could not load room model: ${error.message}`;
+        }
+
+        syncImmersiveState();
+      }
+    </script>
+  </body>
+</html>
